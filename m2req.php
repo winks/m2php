@@ -27,7 +27,7 @@ class Request{
 
         $headers = json_decode($headers);
         
-        return \m2php\Request($sender, $conn_id, $path, $headers, $body);
+        return new \m2php\Request($sender, $conn_id, $path, $headers, $body);
     }
 
     public function is_disconnect() {

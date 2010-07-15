@@ -52,6 +52,10 @@ class Connection {
         $this->send($req->conn_id, $msg);
     }
 
+    public function send($conn_id, $msg) {
+        $this->resp->send($conn_id . " " . $msg);
+    }
+
     public function reply_json($req, $data) {
         $this->send($req->conn_id, json_encode($msg));
     }
