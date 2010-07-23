@@ -1,20 +1,6 @@
 <?php
 namespace m2php;
 
-function xhttp_response($body, $code, $status, $headers) {
-    $http = "HTTP/1.1 %s %s\r\n%s\r\n\r\n%s";
-
-    if (is_null($headers)) {
-        $headers = array();
-    }
-    $headers['Content-Length'] = strlen($body);
-    $hd = "\r\n";
-    foreach($headers as $k => $v) {
-        $hd .= sprintf('%s: %s', $k, $v);
-    }
-    return sprintf($http, $code, $status, $hd, $body);
-}
-
 class Connection {
     private $sender_id;
 
@@ -49,27 +35,32 @@ class Connection {
     }
 
     public function reply($req, $msg) {
-        $this->send($req->conn_id, $msg);
+        $this->send($req->sender, $req->conn_id, $msg);
     }
 
-    public function send($conn_id, $msg) {
-        $this->resp->send($conn_id . " " . $msg);
+    public function send($uuid, $conn_id, $msg) {
+        $header = sprintf('%s %d:%s,', $uuid, strlen($conn_id), $conn_id);
+        $this->resp->send($header . " " . $msg);
     }
 
     public function reply_json($req, $data) {
-        $this->send($req->conn_id, json_encode($msg));
+        $this->send($req->sender, $req->conn_id, json_encode($msg));
     }
+
     public function reply_http($req, $body, $code = 200, $status = "OK", $headers = null) {
         $this->reply($req, \m2php\http_response($body, $code, $status, $headers));
     }
-    public function deliver($idents, $data) {
-        $this->resp->send(join(' ', $idents) . ' ' . $data);
+
+    public function deliver($uuid, $idents, $data) {
+        $this->send($uuid, join(' ', $idents),  $data);
     }
-    public function deliver_json($idents, $data) {
-        $this->deliver($idents, json_encode($data));
+
+    public function deliver_json($uuid, $idents, $data) {
+        $this->deliver($uuid, $idents, json_encode($data));
     }
-    public function deliver_http($idents, $body, $code = 200, $status = "OK", $headers = null) {
-        $this->deliver($idents, \m2php\http_response($body, $code, $status, $headers));
+
+    public function deliver_http($uuid, $idents, $body, $code = 200, $status = "OK", $headers = null) {
+        $this->deliver($uuid, $idents, \m2php\http_response($body, $code, $status, $headers));
     }
 
 }
