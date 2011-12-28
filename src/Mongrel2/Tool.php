@@ -4,7 +4,7 @@ namespace Mongrel2;
 
 class Tool
 {
-    public function parse_netstring($ns)
+    static public function parse_netstring($ns)
     {
         list($len, $rest) = explode(':', $ns, 2);
         $len = intval($len);
@@ -15,7 +15,7 @@ class Tool
         );
     }
 
-    public function http_response($body, $code, $status, $headers)
+    static public function http_response($body, $code, $status, $headers)
     {
         $http = "HTTP/1.1 %s %s\r\n%s\r\n%s";
 
