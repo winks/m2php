@@ -13,12 +13,10 @@ Requirements
 
 Howto
 -----
-Just as with the python library:
-    $ cd m2php
-    $ php m2php.php
 
+    $ php example/hello.php
     $ curl http://localhost:6767/handlertest
 
 LICENSE
 -------
-Same as Mongrel2.
+New BSD, see LICENSE.
