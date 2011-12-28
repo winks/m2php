@@ -11,11 +11,7 @@ class Handler implements HandlerInterface
         $this->conn = $conn;
     }
 
-    function handle(Request $request)
-    {
-    }
-
-    function handleDisconnect(Request $request)
+    public function handleDisconnect(Request $request)
     {
     }
 }
