@@ -1,5 +1,6 @@
 <?php
-namespace m2php;
+
+namespace Mongrel2;
 
 class Tool
 {

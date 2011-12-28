@@ -1,5 +1,6 @@
 <?php
-namespace m2php;
+
+namespace Mongrel2;
 
 require 'm2conn.php';
 require 'm2req.php';
