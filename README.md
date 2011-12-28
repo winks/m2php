@@ -54,7 +54,7 @@ while (true) {
         continue;
     }
 
-    $this->conn->reply_http($req, 'Hello World');
+    $conn->reply_http($req, 'Hello World');
 }
 ```
 
