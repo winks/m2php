@@ -58,8 +58,18 @@ while (true) {
 }
 ```
 
-    $ php example/hello.php
-    $ curl http://localhost:6767/handlertest
+Example
+-------
+
+To run the example, run the following commands:
+
+    $ cd example
+    $ m2sh load
+    $ m2sh start
+    # in a separate shell
+    $ php hello.php
+    # in a separate shell or browser
+    $ curl http://localhost:6767/hello
 
 Tests
 -----
