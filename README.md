@@ -11,11 +11,67 @@ Requirements
 * PHP 5.3: <http://php.net>
 * ZeroMQ PHP bindings: <http://www.zeromq.org/bindings:php>
 
-Howto
+Fetch
 -----
+
+The recommended way to install m2php is [through composer](http://packagist.org).
+
+Just create a composer.json file for your project:
+
+    {
+        "require": {
+            "mongrel2/mongrel2": "*"
+        }
+    }
+
+And run these two commands to install it:
+
+    $ wget http://getcomposer.org/composer.phar
+    $ php composer.phar install
+
+Now you can add the autoloader, and you will have access to the library:
+
+    ```php
+    <?php
+    require 'vendor/.composer/autoload.php';
+    ```
+
+Usage
+-----
+
+    ```php
+    <?php
+
+    use Mongrel2\Connection;
+
+    $sender_id = "82209006-86FF-4982-B5EA-D1E29E55D481";
+    $conn = new Connection($sender_id, "tcp://127.0.0.1:9997", "tcp://127.0.0.1:9996");
+
+    while (true) {
+        $req = $conn->recv();
+
+        if ($req->is_disconnect()) {
+            continue;
+        }
+
+        $this->conn->reply_http($req, 'Hello World');
+    }
+    ```
 
     $ php example/hello.php
     $ curl http://localhost:6767/handlertest
+
+Tests
+-----
+
+Before running the tests you need to have composer set up an autoloader:
+
+    $ wget http://getcomposer.org/composer.phar
+    $ php composer.phar install
+
+Now you can run the unit tests.
+
+    $ phpunit
 
 LICENSE
 -------
