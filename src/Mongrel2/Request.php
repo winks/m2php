@@ -1,7 +1,8 @@
 <?php
 namespace m2php;
 
-class Request{
+class Request
+{
     public $sender;
     public $path;
     public $conn_id;
@@ -9,7 +10,8 @@ class Request{
     public $body;
     public $data;
 
-    public function __construct($sender, $conn_id, $path, $headers, $body) {
+    public function __construct($sender, $conn_id, $path, $headers, $body)
+    {
         $this->sender = $sender;
         $this->path = $path;
         $this->conn_id = $conn_id;
@@ -23,7 +25,8 @@ class Request{
         }
     }
 
-    public static function parse($msg) {
+    public static function parse($msg)
+    {
         list($sender, $conn_id, $path, $rest) = explode(' ', $msg, 4);
         $hd = \m2php\parse_netstring($rest);
         $headers = $hd[0];
@@ -36,7 +39,8 @@ class Request{
         return new \m2php\Request($sender, $conn_id, $path, $headers, $body);
     }
 
-    public function is_disconnect() {
+    public function is_disconnect()
+    {
         if ($this->headers->METHOD == 'JSON') {
             return $this->data['type'] == 'disconnect';
         }
