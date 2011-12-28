@@ -27,7 +27,7 @@ class Connection
 
     public function recv()
     {
-        return \m2php\Request::parse($this->reqs->recv());
+        return Request::parse($this->reqs->recv());
     }
 
     public function recv_json()
@@ -57,7 +57,7 @@ class Connection
 
     public function reply_http($req, $body, $code = 200, $status = "OK", $headers = null)
     {
-        $this->reply($req, \m2php\http_response($body, $code, $status, $headers));
+        $this->reply($req, Tool::http_response($body, $code, $status, $headers));
     }
 
     public function deliver($uuid, $idents, $data)
@@ -72,7 +72,7 @@ class Connection
 
     public function deliver_http($uuid, $idents, $body, $code = 200, $status = "OK", $headers = null)
     {
-        $this->deliver($uuid, $idents, \m2php\http_response($body, $code, $status, $headers));
+        $this->deliver($uuid, $idents, Tool::http_response($body, $code, $status, $headers));
     }
 
 }

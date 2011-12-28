@@ -29,15 +29,15 @@ class Request
     public static function parse($msg)
     {
         list($sender, $conn_id, $path, $rest) = explode(' ', $msg, 4);
-        $hd = \m2php\parse_netstring($rest);
+        $hd = Tool::parse_netstring($rest);
         $headers = $hd[0];
         $rest = $hd[1];
-        $hd = \m2php\parse_netstring($rest);
+        $hd = Tool::parse_netstring($rest);
         $body = $hd[0];
 
         $headers = json_decode($headers);
         
-        return new \m2php\Request($sender, $conn_id, $path, $headers, $body);
+        return new Request($sender, $conn_id, $path, $headers, $body);
     }
 
     public function is_disconnect()

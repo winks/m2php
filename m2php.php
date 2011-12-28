@@ -8,7 +8,7 @@ require 'm2tools.php';
 
 $sender_id = "82209006-86FF-4982-B5EA-D1E29E55D481";
 
-$conn = new  \m2php\Connection($sender_id, "tcp://127.0.0.1:9997", "tcp://127.0.0.1:9996");
+$conn = new  \Mongrel2\Connection($sender_id, "tcp://127.0.0.1:9997", "tcp://127.0.0.1:9996");
 
 while (true) {
     echo "WAITING FOR REQUEST" . PHP_EOL;
