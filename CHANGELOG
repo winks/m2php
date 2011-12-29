@@ -1,0 +1,13 @@
+Changelog for m2php
+===================
+
+0.1.9
+-----
+ * major rewiring after a long hiatus, thanks Igor Wiedler
+   * lots of shifting around files and directories
+   * use the "Mongrel2" namespace
+   * follow the PSR-0 naming convention (this allows autoloading)
+   * add a composer.json so it can be installed via composer
+   * improved README
+ * fixed a bug in reply_json
+ * preparing for 0.2.0 release

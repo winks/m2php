@@ -1,6 +1,7 @@
 {
     "name": "mongrel2/mongrel2",
     "type": "library",
+    "version": "0.1.9",
     "description": "PHP bindings for mongrel2",
     "keywords": ["mongrel", "mongrel2", "zeromq"],
     "license": "BSD-3",
@@ -8,6 +9,10 @@
         {
             "name": "Florian Anderiasch",
             "email": "fa@art-core.or"
+        },
+        {
+            "name": "Igor Wiedler",
+            "email": "igor@wiedler.ch"
         }
     ],
     "require": {
