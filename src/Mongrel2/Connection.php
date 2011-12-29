@@ -52,7 +52,7 @@ class Connection
 
     public function reply_json($req, $data)
     {
-        $this->send($req->sender, $req->conn_id, json_encode($msg));
+        $this->send($req->sender, $req->conn_id, json_encode($data));
     }
 
     public function reply_http($req, $body, $code = 200, $status = "OK", $headers = null)
