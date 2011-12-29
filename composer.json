@@ -1,0 +1,22 @@
+{
+    "name": "mongrel2/mongrel2",
+    "type": "library",
+    "description": "PHP bindings for mongrel2",
+    "keywords": ["mongrel", "mongrel2", "zeromq"],
+    "license": "BSD-3",
+    "authors": [
+        {
+            "name": "Florian Anderiasch",
+            "email": "fa@art-core.or"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-zmq": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Mongrel2": "src"
+        }
+    }
+}
