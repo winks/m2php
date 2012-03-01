@@ -29,13 +29,13 @@ class Request
     public static function parse($msg)
     {
         list($sender, $conn_id, $path, $rest) = explode(' ', $msg, 4);
-        $hd = Tool::parse_netstring($rest);
+        $hd = Tool::parse_tnetstring($rest);
         $headers = $hd[0];
         $rest = $hd[1];
-        $hd = Tool::parse_netstring($rest);
+        $hd = Tool::parse_tnetstring($rest);
         $body = $hd[0];
 
-        $headers = json_decode($headers);
+        if (is_string($headers)) $headers = json_decode($headers);
         
         return new Request($sender, $conn_id, $path, $headers, $body);
     }
