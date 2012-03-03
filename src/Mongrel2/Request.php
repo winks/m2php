@@ -19,8 +19,9 @@ class Request
         $this->headers = $headers;
         $this->body = $body;
 
-        if ($this->headers->METHOD == 'JSON') {
-            $this->data = json_decode($body);
+
+        if ($this->headers['METHOD'] == 'JSON') {
+            $this->data = json_decode($body, true);
         } else {
             $this->data = array();
         }
@@ -35,15 +36,15 @@ class Request
         $hd = Tool::parse_tnetstring($rest);
         $body = $hd[0];
 
-        if (is_string($headers)) $headers = json_decode($headers);
+        if (is_string($headers)) $headers = json_decode($headers, true);
         
         return new Request($sender, $conn_id, $path, $headers, $body);
     }
 
     public function is_disconnect()
     {
-        if ($this->headers->METHOD == 'JSON') {
-            return $this->data['type'] == 'disconnect';
+        if ($this->headers['METHOD'] == 'JSON') {
+            return ($this->data->type == 'disconnect');
         }
     }
 }
