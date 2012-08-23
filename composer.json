@@ -1,5 +1,5 @@
 {
-    "name": "mongrel2/mongrel2",
+    "name": "winks/m2php",
     "type": "library",
     "version": "0.1.9",
     "description": "PHP bindings for mongrel2",
