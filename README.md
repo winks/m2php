@@ -20,7 +20,7 @@ Just create a composer.json file for your project:
 
     {
         "require": {
-            "mongrel2/mongrel2": "*"
+            "winks/m2php": "dev-master"
         }
     }
 
