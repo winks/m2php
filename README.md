@@ -26,14 +26,14 @@ Just create a composer.json file for your project:
 
 And run these two commands to install it:
 
-    $ wget http://getcomposer.org/composer.phar
+    $ curl -sS https://getcomposer.org/installer | php
     $ php composer.phar install
 
 Now you can add the autoloader, and you will have access to the library:
 
 ```php
 <?php
-require 'vendor/.composer/autoload.php';
+require 'vendor/autoload.php';
 ```
 
 Usage
@@ -61,7 +61,12 @@ while (true) {
 Example
 -------
 
-To run the example, run the following commands:
+Before running the example, you need to have composer set up an autoloader:
+
+    $ curl -sS https://getcomposer.org/installer | php
+    $ php composer.phar install
+
+Now you can run the example.
 
     $ cd example
     $ m2sh load
@@ -76,7 +81,7 @@ Tests
 
 Before running the tests you need to have composer set up an autoloader:
 
-    $ wget http://getcomposer.org/composer.phar
+    $ curl -sS https://getcomposer.org/installer | php
     $ php composer.phar install
 
 Now you can run the unit tests.
