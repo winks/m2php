@@ -1,6 +1,10 @@
 Changelog for m2php
 ===================
 
+0.?.?
+-----
+ * Added transparent support for the tnetstring protocol
+
 0.1.9
 -----
  * major rewiring after a long hiatus, thanks Igor Wiedler
