@@ -20,7 +20,7 @@ class Request
         $this->body = $body;
 
         if ($this->headers->METHOD == 'JSON') {
-            $this->data = json_decode($body);
+            $this->data = json_decode($body, true);
         } else {
             $this->data = array();
         }
@@ -36,7 +36,7 @@ class Request
         $body = $hd[0];
 
         $headers = json_decode($headers);
-        
+
         return new Request($sender, $conn_id, $path, $headers, $body);
     }
 
